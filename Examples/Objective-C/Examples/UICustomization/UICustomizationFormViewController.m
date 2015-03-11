@@ -45,16 +45,11 @@
         
         // Name
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"Name" rowType:XLFormRowDescriptorTypeText title:@"Name"];
-        // change the background color
-        [row.cellConfig setObject:[UIColor greenColor] forKey:@"backgroundColor"];
-        // font
-        [row.cellConfig setObject:[UIFont fontWithName:@"Helvetica" size:30] forKey:@"textLabel.font"];
-        // background color
-        [row.cellConfig setObject:[UIColor grayColor] forKey:@"textField.backgroundColor"];
-        // font
-        [row.cellConfig setObject:[UIFont fontWithName:@"Helvetica" size:25] forKey:@"textField.font"];
-        // alignment
-        [row.cellConfig setObject:@(NSTextAlignmentRight) forKey:@"textField.textAlignment"];
+        row.cellConfig = @{@"backgroundColor":[UIColor greenColor],
+                           @"textLabel.font":[UIFont fontWithName:@"Helvetica" size:30],
+                           @"textField.backgroundColor":[UIColor grayColor],
+                           @"textField.font":[UIFont fontWithName:@"Helvetica" size:25],
+                           @"textField.textAlignment":@(NSTextAlignmentRight)};
         [section addFormRow:row];
         
         
@@ -64,9 +59,9 @@
         
         //Button
         row = [XLFormRowDescriptor formRowDescriptorWithTag:@"Button" rowType:XLFormRowDescriptorTypeButton title:@"Button"];
-        [row.cellConfig setObject:[UIColor purpleColor] forKey:@"backgroundColor"];
-        [row.cellConfig setObject:[UIColor whiteColor] forKey:@"textLabel.color"];
-        [row.cellConfig setObject:[UIFont fontWithName:@"Helvetica" size:40] forKey:@"textLabel.font"];
+        row.cellConfig = @{@"backgroundColor":[UIColor purpleColor],
+                           @"textLabel.color":[UIColor whiteColor],
+                           @"textLabel.font":[UIFont fontWithName:@"Helvetica" size:40]};
         [section addFormRow:row];
         
         self.form = form;

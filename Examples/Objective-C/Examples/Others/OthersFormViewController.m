@@ -92,9 +92,9 @@ NSString *const kButtonWithStoryboardId = @"buttonWithStoryboardId";
     // Slider
     row = [XLFormRowDescriptor formRowDescriptorWithTag:kSlider rowType:XLFormRowDescriptorTypeSlider title:@"Slider"];
     row.value = @(30);
-    [row.cellConfig setObject:@(100) forKey:@"slider.maximumValue"];
-    [row.cellConfig setObject:@(10) forKey:@"slider.minimumValue"];
-    [row.cellConfig setObject:@(4) forKey:@"steps"];
+    row.cellConfig = @{@"slider.maximumValue":@100,
+                       @"slider.minimumValue":@10,
+                       @"steps":@4};
     [section addFormRow:row];
     
     // Custom cell
@@ -116,16 +116,16 @@ NSString *const kButtonWithStoryboardId = @"buttonWithStoryboardId";
     
     // Button
     XLFormRowDescriptor * buttonRow = [XLFormRowDescriptor formRowDescriptorWithTag:kButton rowType:XLFormRowDescriptorTypeButton title:@"Button"];
-    [buttonRow.cellConfig setObject:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0] forKey:@"textLabel.textColor"];
+    buttonRow.cellConfig =  @{@"textLabel.textColor":[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]};
     buttonRow.action.formSelector = @selector(didTouchButton:);
     [section addFormRow:buttonRow];
-    
-    
+
+
     // Left Button
     XLFormRowDescriptor * buttonLeftAlignedRow = [XLFormRowDescriptor formRowDescriptorWithTag:kButtonLeftAligned rowType:XLFormRowDescriptorTypeButton title:@"Button with Block"];
-    [buttonLeftAlignedRow.cellConfig setObject:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0] forKey:@"textLabel.textColor"];
-    [buttonLeftAlignedRow.cellConfig setObject:@(NSTextAlignmentLeft) forKey:@"textLabel.textAlignment"];
-    [buttonLeftAlignedRow.cellConfig setObject:@(UITableViewCellAccessoryDisclosureIndicator) forKey:@"accessoryType"];
+    buttonLeftAlignedRow.cellConfig = @{@"textLabel.textColor":[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0],
+                                        @"textLabel.textAlignment":@(NSTextAlignmentLeft),
+                                        @"accessoryType":@(UITableViewCellAccessoryDisclosureIndicator)};
     buttonLeftAlignedRow.action.formBlock = ^(XLFormRowDescriptor * sender){
         if ([[sender.sectionDescriptor.formDescriptor formRowWithTag:kSwitchBool].value boolValue]){
             UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Switch is ON", nil) message:@"Button has checked the switch value..." delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];

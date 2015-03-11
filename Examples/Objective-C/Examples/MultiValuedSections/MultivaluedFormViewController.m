@@ -37,7 +37,7 @@
     XLFormRowDescriptor * row;
     
     NSArray * nameList = @[@"family", @"male", @"female", @"client"];
-    
+    NSDictionary *cellConfig = @{@"textField.placeholder":@"Add a new tag"};
     
     form = [XLFormDescriptor formDescriptorWithTitle:@"MultiValued Examples"];
     
@@ -50,13 +50,13 @@
     for (NSString * tag in nameList) {
         // add a row to the section, the row will be used to crete new rows.
         row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
-        [[row cellConfig] setObject:@"Add a new tag" forKey:@"textField.placeholder"];
+        row.cellConfig = cellConfig;
         row.value = [tag copy];
         [section addFormRow:row];
     }
     // add a row to the section, the row will be used to crete new rows.
     row = [XLFormRowDescriptor formRowDescriptorWithTag:nil rowType:XLFormRowDescriptorTypeText];
-    [[row cellConfig] setObject:@"Add a new tag" forKey:@"textField.placeholder"];
+    row.cellConfig = cellConfig;
     [section addFormRow:row];
     
     // Another MultivaluedSection section

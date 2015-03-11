@@ -80,12 +80,12 @@
     
     // Title
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"title" rowType:XLFormRowDescriptorTypeText];
-    [row.cellConfig setObject:@"Title" forKey:@"textField.placeholder"];
+    row.cellConfig = @{@"textField.placeholder":@"Title"};
     [section addFormRow:row];
     
     // Location
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"location" rowType:XLFormRowDescriptorTypeText];
-    [row.cellConfig setObject:@"Location" forKey:@"textField.placeholder"];
+    row.cellConfig = @{@"textField.placeholder":@"Location"};
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
@@ -159,12 +159,12 @@
 
     // URL
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"url" rowType:XLFormRowDescriptorTypeURL];
-    [row.cellConfig setObject:@"URL" forKey:@"textField.placeholder"];
+    row.cellConfig = @{@"textField.placeholder":@"URL"};
     [section addFormRow:row];
     
     // Notes
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notes" rowType:XLFormRowDescriptorTypeTextView];
-    [row.cellConfig setObject:@"Notes" forKey:@"textView.placeholder"];
+    row.cellConfig = @{@"textField.placeholder":@"Notes"};
     [section addFormRow:row];
     
     

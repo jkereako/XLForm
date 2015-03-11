@@ -50,7 +50,7 @@ typedef NS_ENUM(NSUInteger, XLFormPresentationMode) {
 @property Class valueTransformer;
 @property UITableViewCellStyle cellStyle;
 
-@property (nonatomic) NSMutableDictionary *cellConfig;
+@property (nonatomic) NSDictionary *cellConfig;
 @property BOOL disabled;
 @property BOOL required;
 
