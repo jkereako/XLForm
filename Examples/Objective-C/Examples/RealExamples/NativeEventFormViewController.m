@@ -164,7 +164,7 @@
     
     // Notes
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notes" rowType:XLFormRowDescriptorTypeTextView];
-    row.cellConfig = @{@"textField.placeholder":@"Notes"};
+    row.cellConfig = @{@"textView.placeholder":@"Notes"};
     [section addFormRow:row];
     
     
