@@ -49,9 +49,6 @@
 -(void)removeFormRowAtIndex:(NSUInteger)index;
 -(void)removeFormRow:(XLFormRowDescriptor *)formRow;
 
--(XLFormRowDescriptor *)newMultivaluedFormRowDescriptor;
-
-
-
+@property (nonatomic, readonly, strong) XLFormRowDescriptor *newMultivaluedFormRowDescriptor;
 
 @end

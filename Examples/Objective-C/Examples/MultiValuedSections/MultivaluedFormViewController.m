@@ -30,7 +30,7 @@
 
 @implementation MultiValuedFormViewController
 
-- (id)init
+- (instancetype)init
 {
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;

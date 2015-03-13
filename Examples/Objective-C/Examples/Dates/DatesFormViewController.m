@@ -37,7 +37,7 @@ NSString *const kDateTime = @"dateTime";
 @implementation DatesFormViewController
 
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self){

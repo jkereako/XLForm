@@ -42,7 +42,7 @@ NSString *const kNotes = @"notes";
 
 @implementation InputsFormViewController
 
--(id)init
+-(instancetype)init
 {
     XLFormDescriptor * formDescriptor = [XLFormDescriptor formDescriptorWithTitle:@"Text Fields"];
     XLFormSectionDescriptor * section;

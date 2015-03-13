@@ -119,7 +119,7 @@ NSString * const kValidationInteger = @"kInteger";
 {
     NSArray * array = [self formValidationErrors];
     [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        XLFormValidationStatus * validationStatus = [[obj userInfo] objectForKey:XLValidationStatusErrorKey];
+        XLFormValidationStatus * validationStatus = [obj userInfo][XLValidationStatusErrorKey];
         if ([validationStatus.rowDescriptor.tag isEqualToString:kValidationName]){
             UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[self.form indexPathOfFormRow:validationStatus.rowDescriptor]];
             cell.backgroundColor = [UIColor orangeColor];

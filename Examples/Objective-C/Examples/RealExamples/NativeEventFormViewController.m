@@ -28,7 +28,7 @@
 
 @implementation NativeEventNavigationViewController
 
--(id)init
+-(instancetype)init
 {
     self = [super initWithRootViewController:[[NativeEventFormViewController alloc] init]];
     return  self;

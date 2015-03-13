@@ -54,7 +54,7 @@ NSString *const kButtonWithStoryboardId = @"buttonWithStoryboardId";
     return self;
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self){
@@ -106,7 +106,7 @@ NSString *const kButtonWithStoryboardId = @"buttonWithStoryboardId";
     // Info cell
     XLFormRowDescriptor *infoRowDescriptor = [XLFormRowDescriptor formRowDescriptorWithTag:kInfo rowType:XLFormRowDescriptorTypeInfo];
     infoRowDescriptor.title = @"Version";
-    infoRowDescriptor.value = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    infoRowDescriptor.value = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     [section addFormRow:infoRowDescriptor];
     
     
