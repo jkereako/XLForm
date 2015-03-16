@@ -619,4 +619,17 @@
     }
 }
 
+#pragma mark - properties
+
+-(void)setForm:(XLFormDescriptor *)form
+{
+    _form = form;
+    _form.delegate = self;
+}
+
+-(XLFormDescriptor *)form
+{
+    return _form;
+}
+
 @end
