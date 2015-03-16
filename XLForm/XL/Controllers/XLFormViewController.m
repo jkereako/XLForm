@@ -627,9 +627,4 @@
     _form.delegate = self;
 }
 
--(XLFormDescriptor *)form
-{
-    return _form;
-}
-
 @end

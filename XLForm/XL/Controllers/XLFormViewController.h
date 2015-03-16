@@ -61,8 +61,8 @@
 
 @interface XLFormViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, XLFormDescriptorDelegate, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, XLFormViewControllerDelegate>
 
-@property XLFormDescriptor * form;
-@property IBOutlet UITableView * tableView;
+@property (nonatomic) XLFormDescriptor * form;
+@property (nonatomic) IBOutlet UITableView * tableView;
 
 -(instancetype)initWithForm:(XLFormDescriptor *)form;
 -(instancetype)initWithForm:(XLFormDescriptor *)form style:(UITableViewStyle)style;
