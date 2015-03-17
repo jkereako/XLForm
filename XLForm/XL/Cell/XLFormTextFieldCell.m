@@ -135,14 +135,14 @@
     [self.textField setEnabled:!self.rowDescriptor.disabled];
 }
 
+-(BOOL)formDescriptorCellCanBecomeFirstResponder
+{
+    return (!self.rowDescriptor.disabled);
+}
+
 -(BOOL)formDescriptorCellBecomeFirstResponder
 {
     return [self.textField becomeFirstResponder];
-}
-
--(BOOL)formDescriptorCellResignFirstResponder
-{
-    return [self.textField resignFirstResponder];
 }
 
 #pragma mark - Properties
