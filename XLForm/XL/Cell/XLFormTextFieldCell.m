@@ -145,6 +145,18 @@
     return [self.textField becomeFirstResponder];
 }
 
+-(void)highlight
+{
+    [super highlight];
+    self.textLabel.textColor = self.formViewController.view.tintColor;
+}
+
+-(void)unhighlight
+{
+    [super unhighlight];
+    [self.formViewController reloadFormRow:self.rowDescriptor];
+}
+
 #pragma mark - Properties
 
 -(UILabel *)textLabel
@@ -231,12 +243,14 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    [self.formViewController beginEditing:self.rowDescriptor];
     [self.formViewController textFieldDidBeginEditing:textField];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [self textFieldDidChange:textField];
+    [self.formViewController endEditing:self.rowDescriptor];
     [self.formViewController textFieldDidEndEditing:textField];
 }
 
