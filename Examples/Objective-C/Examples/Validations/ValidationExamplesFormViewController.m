@@ -154,7 +154,7 @@ NSString * const kValidationInteger = @"kInteger";
     animation.duration = 0.3;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     animation.additive = YES;
-    
+
     [cell.layer addAnimation:animation forKey:@"shake"];
 }
 

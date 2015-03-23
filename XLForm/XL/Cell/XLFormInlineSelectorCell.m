@@ -76,10 +76,11 @@
 -(void)update
 {
     [super update];
+    self.accessoryType = UITableViewCellAccessoryNone;
     [self.textLabel setText:self.rowDescriptor.title];
+    self.selectionStyle = self.rowDescriptor.isDisabled ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault;
     self.textLabel.text = [NSString stringWithFormat:@"%@%@", self.rowDescriptor.title, self.rowDescriptor.required && self.rowDescriptor.sectionDescriptor.formDescriptor.addAsteriskToRequiredRowsTitle ? @"*" : @""];
     self.detailTextLabel.text = [self valueDisplayText];
-    self.selectionStyle = self.rowDescriptor.disabled ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault;
 }
 
 -(BOOL)formDescriptorCellCanBecomeFirstResponder
@@ -105,7 +106,7 @@
 -(void)highlight
 {
     [super highlight];
-    self.detailTextLabel.textColor = self.formViewController.view.tintColor;
+    self.detailTextLabel.textColor = self.tintColor;
 }
 
 -(void)unhighlight

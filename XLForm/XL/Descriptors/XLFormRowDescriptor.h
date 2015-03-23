@@ -33,6 +33,7 @@
 @class XLFormSectionDescriptor;
 @protocol XLFormValidatorProtocol;
 @class XLFormAction;
+@class XLFormBaseCell;
 
 typedef NS_ENUM(NSUInteger, XLFormPresentationMode) {
     XLFormPresentationModeDefault = 0,
@@ -51,8 +52,9 @@ typedef NS_ENUM(NSUInteger, XLFormPresentationMode) {
 @property UITableViewCellStyle cellStyle;
 
 @property (nonatomic) NSDictionary *cellConfig;
-@property BOOL disabled;
-@property BOOL required;
+@property (nonatomic) NSDictionary *cellConfigIfDisabled;
+@property (getter=isDisabled) BOOL disabled;
+@property (getter=isRequired) BOOL required;
 
 @property XLFormAction * action;
 
@@ -62,7 +64,7 @@ typedef NS_ENUM(NSUInteger, XLFormPresentationMode) {
 +(instancetype)formRowDescriptorWithTag:(NSString *)tag rowType:(NSString *)rowType;
 +(instancetype)formRowDescriptorWithTag:(NSString *)tag rowType:(NSString *)rowType title:(NSString *)title;
 
--(UITableViewCell<XLFormDescriptorCell> *)cellForFormController:(XLFormViewController *)formController;
+-(XLFormBaseCell *)cellForFormController:(XLFormViewController *)formController;
 
 @property NSString *requireMsg;
 -(void)addValidator:(id<XLFormValidatorProtocol>)validator;

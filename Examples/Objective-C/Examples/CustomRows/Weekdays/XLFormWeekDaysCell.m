@@ -93,13 +93,21 @@ NSString *const kSaturday = @"saturday";
 -(void)updateButtons
 {
     NSDictionary * value = self.rowDescriptor.value;
-    self.sundayButton.selected = [value[kSunday] boolValue];
-    self.mondayButton.selected = [value[kMonday] boolValue];
-    self.tuesdayButton.selected = [value[kTuesday] boolValue];
-    self.wednesdayButton.selected = [value[kWednesday] boolValue];
-    self.thursdayButton.selected = [value[kThursday] boolValue];
-    self.fridayButton.selected = [value[kFriday] boolValue];
-    self.saturdayButton.selected = [value[kSaturday] boolValue];
+    self.sundayButton.selected = [[value objectForKey:kSunday] boolValue];
+    self.mondayButton.selected = [[value objectForKey:kMonday] boolValue];
+    self.tuesdayButton.selected = [[value objectForKey:kTuesday] boolValue];
+    self.wednesdayButton.selected = [[value objectForKey:kWednesday] boolValue];
+    self.thursdayButton.selected = [[value objectForKey:kThursday] boolValue];
+    self.fridayButton.selected = [[value objectForKey:kFriday] boolValue];
+    self.saturdayButton.selected = [[value objectForKey:kSaturday] boolValue];
+    
+    [self.sundayButton setAlpha:((self.rowDescriptor.isDisabled) ? .6 : 1)];
+    [self.mondayButton setAlpha:((self.rowDescriptor.isDisabled) ? .6 : 1)];
+    [self.tuesdayButton setAlpha:((self.rowDescriptor.isDisabled) ? .6 : 1)];
+    [self.wednesdayButton setAlpha:((self.rowDescriptor.isDisabled) ? .6 : 1)];
+    [self.thursdayButton setAlpha:((self.rowDescriptor.isDisabled) ? .6 : 1)];
+    [self.fridayButton setAlpha:((self.rowDescriptor.isDisabled) ? .6 : 1)];
+    [self.saturdayButton setAlpha:((self.rowDescriptor.isDisabled) ? .6 : 1)];
 }
 
 -(NSString *)getDayFormButton:(id)sender
