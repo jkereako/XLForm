@@ -2,7 +2,7 @@
 //  XLFormDescriptor.m
 //  XLForm ( https://github.com/xmartlabs/XLForm )
 //
-//  Copyright (c) 2014 Xmartlabs ( http://xmartlabs.com )
+//  Copyright (c) 2015 Xmartlabs ( http://xmartlabs.com )
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -196,10 +196,13 @@ NSString * const XLValidationStatusErrorKey = @"XLValidationStatusErrorKey";
 
 -(NSIndexPath *)indexPathOfFormRow:(XLFormRowDescriptor *)formRow
 {
-    for (XLFormSectionDescriptor * section in self.formSections){
-        for (XLFormRowDescriptor * row in section.formRows) {
-            if (row == formRow){
-                return [NSIndexPath indexPathForRow:[section.formRows indexOfObject:formRow] inSection:[self.formSections indexOfObject:section]];
+    XLFormSectionDescriptor * section = formRow.sectionDescriptor;
+    if (section){
+        NSUInteger sectionIndex = [self.formSections indexOfObject:section];
+        if (sectionIndex != NSNotFound){
+            NSUInteger rowIndex = [section.formRows indexOfObject:formRow];
+            if (rowIndex != NSNotFound){
+                return [NSIndexPath indexPathForRow:rowIndex inSection:sectionIndex];
             }
         }
     }
@@ -225,7 +228,7 @@ NSString * const XLValidationStatusErrorKey = @"XLValidationStatusErrorKey";
                     [multiValuedValuesArray addObject:row.value];
                 }
             }
-            result[section.multiValuedTag] = multiValuedValuesArray;
+            [result setObject:multiValuedValuesArray forKey:section.multivaluedTag];
         }
     }
     return result;
@@ -253,7 +256,7 @@ NSString * const XLValidationStatusErrorKey = @"XLValidationStatusErrorKey";
                     [multiValuedValuesArray addObject:[row.value valueData]];
                 }
             }
-            result[section.multiValuedTag] = multiValuedValuesArray;
+            [result setObject:multiValuedValuesArray forKey:section.multivaluedTag];
         }
     }
     return result;
