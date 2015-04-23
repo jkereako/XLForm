@@ -72,8 +72,6 @@
                 else{
                     [descriptionArray addObject:[option displayText]];
                 }
-                
-                
             }
         }
         return [descriptionArray componentsJoinedByString:@", "];
@@ -103,7 +101,7 @@
 
 -(BOOL)formDescriptorCellCanBecomeFirstResponder
 {
-    return ((!self.rowDescriptor.isDisabled) && ([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeSelectorPickerView]));
+    return (!self.rowDescriptor.isDisabled && ([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeSelectorPickerView]));
 }
 
 -(BOOL)formDescriptorCellBecomeFirstResponder
@@ -141,7 +139,8 @@
 -(void)update
 {
     [super update];
-    self.accessoryType = self.rowDescriptor.isDisabled || !([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeSelectorPush] || [self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeMultipleSelector]) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
+    self.accessoryType = self.rowDescriptor.isDisabled || !([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeSelectorPush] || [self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeMultipleSelector]) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;;
+    self.editingAccessoryType = self.accessoryType;
     [self.textLabel setText:self.rowDescriptor.title];
     self.selectionStyle = self.rowDescriptor.isDisabled || [self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeInfo] ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault;
     self.textLabel.text = [NSString stringWithFormat:@"%@%@", self.rowDescriptor.title, self.rowDescriptor.required && self.rowDescriptor.sectionDescriptor.formDescriptor.addAsteriskToRequiredRowsTitle ? @"*" : @""];
@@ -173,9 +172,7 @@
                 if (self.popoverController && self.popoverController.popoverVisible) {
                     [self.popoverController dismissPopoverAnimated:NO];
                 }
-                
-                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:selectorViewController];
-                self.popoverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+                self.popoverController = [[UIPopoverController alloc] initWithContentViewController:selectorViewController];
                 self.popoverController.delegate = self;
                 if ([selectorViewController conformsToProtocol:@protocol(XLFormRowDescriptorPopoverViewController)]){
                     ((id<XLFormRowDescriptorPopoverViewController>)selectorViewController).popoverController = self.popoverController;
